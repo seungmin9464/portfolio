@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Next.js App Router를 사용하는 포트폴리오 프로젝트입니다.
 
-First, run the development server:
+## 시작하기
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 엽니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 프로젝트 구조
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/`: 페이지와 루트 레이아웃
+- `src/components/`: 공통 UI 컴포넌트와 전역 스타일
+- `src/app/page.tsx`: 홈 화면. `Header`와 `Footer` 사이의 `<main>`에 페이지 내용을 추가합니다.
+- `src/app/layout.tsx`: 한국어 문서 설정, Pretendard 폰트 로드, styled-components 레지스트리 설정
+- `src/components/GlobalStyles.tsx`: 전역 초기화, Pretendard 기본 글꼴, 색상·글자 크기 등의 CSS 변수
+- `src/components/StyledComponentsRegistry.tsx`: App Router 서버 렌더링용 styled-components 스타일 수집
 
-## Learn More
+컴포넌트 스타일은 각 컴포넌트 파일에서 styled-components로 작성합니다. 공통 색상과 글자 크기는 `GlobalStyles.tsx`의 CSS 변수를 사용합니다.
 
-To learn more about Next.js, take a look at the following resources:
+헤더의 구직 상태를 바꾸려면 `src/components/Header.tsx`에서 `isLookingForJob` 값을 수정합니다. `true`면 “구직 중”, `false`면 “구직 중 아님”으로 표시되며 상태 표시 점의 색상도 함께 변경됩니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 검사 및 빌드
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+## 참고 자료
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js 문서](https://nextjs.org/docs)
+- [styled-components 문서](https://styled-components.com/docs)
+- [Pretendard](https://github.com/orioncactus/pretendard)
