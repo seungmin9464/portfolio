@@ -22,7 +22,7 @@ npm run dev
 
 컴포넌트 스타일은 각 컴포넌트 파일에서 styled-components로 작성합니다. 공통 색상과 글자 크기는 `GlobalStyles.tsx`의 CSS 변수를 사용합니다.
 
-헤더의 구직 상태를 바꾸려면 `src/components/Header.tsx`에서 `isLookingForJob` 값을 수정합니다. `true`면 “구직 중”, `false`면 “구직 중 아님”으로 표시되며 상태 표시 점의 색상도 함께 변경됩니다.
+헤더의 구직 상태를 바꾸려면 `src/components/Header.tsx`에서 `isLookingForJob` 값을 수정합니다. `true`면 “구직 중”, `false`면 “구직 중 아님”으로 표시되며 상태 표시 점의 색상도 함께 변경됩니다. `Contact Me`를 클릭하면 구직 중일 때 `public/resume.pdf`가 다운로드되고, 구직 중이 아닐 때는 안내 알림이 표시됩니다.
 
 ## 검사 및 빌드
 
