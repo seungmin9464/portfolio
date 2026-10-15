@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  section {
+    padding-top: 160px;
+  }
+
   body {
     min-height: 100%;
     display: flex;
