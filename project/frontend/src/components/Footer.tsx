@@ -1,77 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { IoIosArrowUp } from "react-icons/io";
-import styled from "styled-components";
-
-const FooterText = styled.footer`
-	margin-top: auto;
-	font-size: var(--font-size-sm);
-	line-height: 1.5;
-	color: var(--color-gray-30);
-	white-space: nowrap;
-`;
-
-const BackToTopButton = styled.button<{ $visible: boolean }>`
-	position: fixed;
-	right: 32px;
-	bottom: 32px;
-	display: grid;
-	width: 38px;
-	height: 38px;
-	place-items: center;
-	border: 1px solid var(--color-primary-50);
-	border-radius: 50%;
-	background: var(--color-white);
-	color: var(--color-primary-50);
-	font-size: 24px;
-	cursor: pointer;
-	opacity: ${({ $visible }) => ($visible ? 1 : 0)};
-	visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
-	transform: translateY(${({ $visible }) => ($visible ? "0" : "8px")});
-	transition:
-		opacity 300ms ease,
-		transform 300ms ease,
-		visibility 300ms;
-
-	&:hover {
-		background: #833fab;
-    color: var(--color-white);
-    border-color: none;
-    transition: background 0.3s ease, color 0.3s ease;
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--color-primary-70);
-		outline-offset: 3px;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
-`;
-
-export default function Footer() {
-	const [isVisible, setIsVisible] = useState(false);
-
-	useEffect(() => {
-		const updateVisibility = () => setIsVisible(window.scrollY > 0);
-		window.addEventListener("scroll", updateVisibility, { passive: true });
-
-		return () => window.removeEventListener("scroll", updateVisibility);
-	}, []);
-
-	return (
-		<FooterText id="contact">
-			© 2026 백승민 · Crafted with care
-			<BackToTopButton
-				type="button"
-				aria-label="페이지 맨 위로 이동"
-				$visible={isVisible}
-				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-			>
-				<IoIosArrowUp aria-hidden="true" />
-			</BackToTopButton>
-		</FooterText>
-	);
+'use client';
+export default function Footer(){
+ const email=process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+ const github=process.env.NEXT_PUBLIC_GITHUB_URL;
+ return <footer className="site-footer" id="contact"><div className="contact-heading"><h2 className="serif">Let’s build<br className="mobile-break"/> something<span className="footer-dot">.</span></h2><div className="contact-links mono">{email?<a href={'mailto:'+email}>Email ↗</a>:<span className="unconfigured">Email · 준비 중</span>}{github&&github.startsWith('https://')?<a href={github} target="_blank" rel="noreferrer">GitHub ↗</a>:<span className="unconfigured">GitHub · 준비 중</span>}<a href="/resume.pdf" download>Resume ↗</a></div></div><div className="footer-bottom mono"><span>© 2026 Seungmin Back</span><span>Made with intention.</span><button type="button" onClick={()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>Back to top ↑</button></div></footer>
 }
+
+
